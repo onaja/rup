@@ -68,7 +68,7 @@ if(!is_null($events)){
     switch ($typeMessage){
         case 'text':
             switch ($userMessage) {
-                case "ดี,ไง":
+                case "ดี":
                     $textReplyMessage = "สวัสดีจ้า";
                     break;
                 default:
