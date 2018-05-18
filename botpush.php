@@ -75,24 +75,23 @@ if(!is_null($events)){
                     $textReplyMessage = "คุณพิมพ์ B";
                     break;
                 default:
-                    $number = range(1, 6);
-                    shuffle($number);
-                    if($number == 1){
+                    int number = rand(1, 6);
+                    if(number == 1){
                      $textReplyMessage = "ผมไม่เข้าใจครับ พูดใหม่ได้ไหมครับ";
                     }
-                    else if($number == 2){
+                    else if(number == 2){
                      $textReplyMessage = "อะไรนะครับ พูดใหม่ได้ไหมครับ";
                     }
-                    else if($number == 3){
+                    else if(number == 3){
                      $textReplyMessage = "ขอโทษครับ ลองพูดอีกครั้งได้ไหมครับ";
                     }
-                    else if($number == 4){
+                    else if(number == 4){
                      $textReplyMessage = "ขอโทษครับ พูดอีกครั้งได้ไหมครับ";
                     }
-                    else if($number == 5){
+                    else if(number == 5){
                      $textReplyMessage = "พูดอีกทีได้ไหมครับ";
                     }
-                    else if($number == 6){
+                    else if(number == 6){
                      $textReplyMessage = "ว่ายังไงนะครับ";
                     }
                     break;                                      
