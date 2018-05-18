@@ -7,6 +7,9 @@ error_reporting(E_ALL);
 
 require "vendor/autoload.php";
 
+// การตั้งเกี่ยวกับ bot
+require_once 'bot_settings.php';
+
 $access_token = 'nQiY++j/wbNA8u6zlNzz/RtafsC2i40ERqGEgtvxNDXwTTt9Z62ZdAxwwceZk3WqPWBquHunHE0HZtRL8Ezq9xf7cxTdeI/fKSKy9uNqwBIAk+GCO+4DYuhGzchTA1jWATfAYoSH7oEJNRTobVOdIAdB04t89/1O/w1cDnyilFU=';
 
 $channelSecret = '74f635ba1154370dd18c994619068ac8';
