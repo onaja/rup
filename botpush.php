@@ -6,7 +6,7 @@ $access_token = 'nQiY++j/wbNA8u6zlNzz/RtafsC2i40ERqGEgtvxNDXwTTt9Z62ZdAxwwceZk3W
 
 $channelSecret = '74f635ba1154370dd18c994619068ac8';
 
-$pushID = 'Ufd7798f8e80447988a4bf8a50dd9ac44';
+//$pushID = 'Ufd7798f8e80447988a4bf8a50dd9ac44';
 
 ///////////// ส่วนของการเรียกใช้งาน class ผ่าน namespace
 use LINE\LINEBot;
