@@ -71,24 +71,25 @@ if(!is_null($events)){
             switch ($userMessage) {
                 case "ดี":
                     $textReplyMessage = "สวัสดีครับผม Dr.P ยินดีรับใช้";
+                    $replyData = new TextMessageBuilder($textReplyMessage);
                     break;
-                case "s":
+                case "สติ๊กเกอร์":
                     $stickerID = 22;
                     $packageID = 2;
                     $replyData = new StickerMessageBuilder($packageID,$stickerID);
                     break;      
-                case "tm":
+                case "กล่อง":
                     $replyData = new TemplateMessageBuilder('Confirm Template',
                         new ConfirmTemplateBuilder(
-                                'Confirm template builder',
+                                'TEST',
                                 array(
                                     new MessageTemplateActionBuilder(
-                                        'Yes',
-                                        'Text Yes'
+                                        'ใช่',
+                                        'อืม.. ใช่ คงงั้นแหละ'
                                     ),
                                     new MessageTemplateActionBuilder(
-                                        'No',
-                                        'Text NO'
+                                        'ไม่',
+                                        'ไม่อะ ไม่ใช่เลย'
                                     )
                                 )
                         )
@@ -98,21 +99,27 @@ if(!is_null($events)){
                     $number = rand(1, 6);
                     if($number == 1){
                      $textReplyMessage = "ผมไม่เข้าใจครับ พูดใหม่ได้ไหมครับ";
+                     $replyData = new TextMessageBuilder($textReplyMessage);
                     }
                     else if($number == 2){
                      $textReplyMessage = "อะไรนะครับ พูดใหม่ได้ไหมครับ";
+                     $replyData = new TextMessageBuilder($textReplyMessage);
                     }
                     else if($number == 3){
                      $textReplyMessage = "ขอโทษครับ ลองพูดอีกครั้งได้ไหมครับ";
+                     $replyData = new TextMessageBuilder($textReplyMessage);
                     }
                     else if($number == 4){
                      $textReplyMessage = "ขอโทษครับ พูดอีกครั้งได้ไหมครับ";
+                     $replyData = new TextMessageBuilder($textReplyMessage);
                     }
                     else if($number == 5){
                      $textReplyMessage = "พูดอีกทีได้ไหมครับ";
+                     $replyData = new TextMessageBuilder($textReplyMessage);
                     }
                     else if($number == 6){
                      $textReplyMessage = "ว่ายังไงนะครับ";
+                     $replyData = new TextMessageBuilder($textReplyMessage);
                     }
                     break;                                      
             }
