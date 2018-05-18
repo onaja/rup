@@ -65,6 +65,7 @@ if(!is_null($events)){
     $replyToken = $events['events'][0]['replyToken'];
     $typeMessage = $events['events'][0]['message']['type'];
     $userMessage = $events['events'][0]['message']['text'];
+    $userMessage = strtolower($userMessage);
     switch ($typeMessage){
         case 'text':
             switch ($userMessage) {
