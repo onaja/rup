@@ -72,6 +72,11 @@ if(!is_null($events)){
                 case "ดี":
                     $textReplyMessage = "สวัสดีครับผม Dr.P ยินดีรับใช้";
                     break;
+                case "s":
+                    $stickerID = 22;
+                    $packageID = 2;
+                    $replyData = new StickerMessageBuilder($packageID,$stickerID);
+                    break;      
                 case "tm":
                     $replyData = new TemplateMessageBuilder('Confirm Template',
                         new ConfirmTemplateBuilder(
