@@ -69,7 +69,7 @@ if(!is_null($events)){
         case 'text':
             switch ($userMessage) {
                 case "ดี":
-                    $textReplyMessage = "สวัสดีจ้า";
+                    $textReplyMessage = "สวัสดีครับผม Dr.P ยินดีรับใช้";
                     break;
                 default:
                     $number = rand(1, 6);
