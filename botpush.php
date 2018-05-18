@@ -71,23 +71,23 @@ if(!is_null($events)){
                 case "ดี":
                     $textReplyMessage = "สวัสดีครับผม Dr.P ยินดีรับใช้";
                     break;
-               case "กล่อง":
+                case "tm":
                     $replyData = new TemplateMessageBuilder('Confirm Template',
                         new ConfirmTemplateBuilder(
-                                'TEST',
+                                'Confirm template builder',
                                 array(
                                     new MessageTemplateActionBuilder(
-                                        'ใช่',
-                                        'Text ใช่'
+                                        'Yes',
+                                        'Text Yes'
                                     ),
                                     new MessageTemplateActionBuilder(
-                                        'ไม่',
-                                        'Text ไม่'
+                                        'No',
+                                        'Text NO'
                                     )
                                 )
                         )
                     );
-                    break;          
+                    break;                   
                 default:
                     $number = rand(1, 6);
                     if($number == 1){
