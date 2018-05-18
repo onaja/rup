@@ -72,9 +72,9 @@ if(!is_null($events)){
                     $textReplyMessage = "สวัสดีครับผม Dr.P ยินดีรับใช้";
                     break;
                case "กล่อง":
-                    $replyData = new TemplateMessageBuilder('TEST',
+                    $replyData = new TemplateMessageBuilder('Confirm Template',
                         new ConfirmTemplateBuilder(
-                                'Confirm template builder',
+                                'TEST',
                                 array(
                                     new MessageTemplateActionBuilder(
                                         'ใช่',
