@@ -13,7 +13,7 @@ require_once 'bot_settings.php';
 //เชื่อมดาต้าเบส
 //require_once 'rup_db.php'
 
-$access_token = '7CA87T9E0BRwYlrma5EPsEpEA/0X/wAQLB8avv0UXVKEo4jdbMpAAHGsEWHqiof9PWBquHunHE0HZtRL8Ezq9xf7cxTdeI/fKSKy9uNqwBJRLBWGOsmGZjR+EuJ3URp5/J+JZ2cwyPIDs+WO6/VioQdB04t89/1O/w1cDnyilFU=';
+$access_token = 'Dp5cTXj8NHTYDiKoy/fQeb1zcbXljHoONSe4hCHXj1SIQ2FJCCH7qQXjnvfjxR21PWBquHunHE0HZtRL8Ezq9xf7cxTdeI/fKSKy9uNqwBIn3XicVdrptnh7SW4nD77FZeYQgrBWfpTFW9FG1EEujQdB04t89/1O/w1cDnyilFU=';
 
 $channelSecret = '1eb0fde205d854b1f21fedb2a645deee';
 
