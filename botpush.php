@@ -11,7 +11,7 @@ require "vendor/autoload.php";
 require_once 'bot_settings.php';
 
 //เชื่อมดาต้าเบส
-require_once 'rup_db.php'
+//require_once 'rup_db.php'
 
 $access_token = 'Dp5cTXj8NHTYDiKoy/fQeb1zcbXljHoONSe4hCHXj1SIQ2FJCCH7qQXjnvfjxR21PWBquHunHE0HZtRL8Ezq9xf7cxTdeI/fKSKy9uNqwBIn3XicVdrptnh7SW4nD77FZeYQgrBWfpTFW9FG1EEujQdB04t89/1O/w1cDnyilFU=';
 
