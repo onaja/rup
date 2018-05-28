@@ -23,8 +23,8 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   if (strpos($_msg, 'สอนบอท') !== false) {
     $x_tra = str_replace("สอนบอท","", $_msg);
     $pieces = explode("|", $x_tra);
-    $_question=str_replace("[","",$pieces[0]);
-    $_answer=str_replace("]","",$pieces[1]);
+    $_user=str_replace("[","",$pieces[0]);
+    $_system=str_replace("]","",$pieces[1]);
     //Post New Data
     $newData = json_encode(
       array(
