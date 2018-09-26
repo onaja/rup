@@ -62,8 +62,11 @@ else{
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = $count;
+    $arrPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
    
+    $arrPostData2['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData2['messages'][0]['type'] = "text";
+    $arrPostData2['messages'][0]['text'] = 'นับ';
   }
  }
 
@@ -73,6 +76,7 @@ curl_setopt($channel, CURLOPT_HEADER, false);
 curl_setopt($channel, CURLOPT_POST, true);
 curl_setopt($channel, CURLOPT_HTTPHEADER, $arrHeader);
 curl_setopt($channel, CURLOPT_POSTFIELDS, json_encode($arrPostData));
+curl_setopt($channel, CURLOPT_POSTFIELDS, json_encode($arrPostData2));
 curl_setopt($channel, CURLOPT_RETURNTRANSFER,true);
 curl_setopt($channel, CURLOPT_SSL_VERIFYPEER, false);
 $result = curl_exec($channel);
