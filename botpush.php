@@ -5,11 +5,12 @@ $strAccessToken = "<Dp5cTXj8NHTYDiKoy/fQeb1zcbXljHoONSe4hCHXj1SIQ2FJCCH7qQXjnvfj
 $content = file_get_contents('php://input');
 $arrJson = json_decode($content, true);
 
-$strUrl = "https://api.line.me/v2/bot/message/reply";
+$strUrl2 = "https://api.line.me/v2/bot/message/reply";
 
 $arrHeader = array();
 $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
+
 $_msg = $arrJson['events'][0]['message']['text'];
 $id = $arrayJson['events'][0]['source']['userId'];
 
