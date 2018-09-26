@@ -62,7 +62,9 @@ else{
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
-    $arrPostData['messages'][1]['text'] = 'นับ';
+    
+    $arrPostData['messages'][0]['type'] = "text2";
+    $arrPostData['messages'][0]['text2'] = 'นับ';
   }
  }
 
