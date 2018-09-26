@@ -57,18 +57,15 @@ else{
    } 
   }
   
-  else if($_msg !== NULL) {
-    $arrPostData = array();
-    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-    $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'นับ';
-  }
-  
   else if($_msg !== NULL){
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
+    
+    $arrPostData['replyToken'] = $arrJson['events'][1]['replyToken'];
+    $arrPostData['messages'][1]['type'] = "text";
+    $arrPostData['messages'][1]['text'] = 'นับ';
   }
  }
 
