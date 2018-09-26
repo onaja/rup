@@ -66,7 +66,7 @@ else{
     $count = 0;
   }
   
-  else{
+  else if($count == 0){
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
