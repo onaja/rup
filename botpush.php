@@ -11,6 +11,7 @@ $arrHeader = array();
 $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
 $_msg = $arrJson['events'][0]['message']['text'];
+$id = $arrayJson['events'][0]['source']['userId'];
 
 
 $api_key="flAOZDL2-6BNiSZ-XqZc0FAKrYEo2dc3";
@@ -55,6 +56,7 @@ else{
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = $rec->system;
+    
    } 
   }
   
@@ -63,10 +65,14 @@ else{
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
-  
+    $arrayPostData['messages'][1]['type'] = "sticker";
+    $arrayPostData['messages'][1]['packageId'] = "2";
+    $arrayPostData['messages'][1]['stickerId'] = "34";
+    pushMsg($arrayHeader,$arrayPostData);
   }
  }
-
+function pushMsg($arrayHeader,$arrayPostData){
+$strUrl = "https://api.line.me/v2/bot/message/push";
 $channel = curl_init();
 curl_setopt($channel, CURLOPT_URL,$strUrl);
 curl_setopt($channel, CURLOPT_HEADER, false);
@@ -77,4 +83,7 @@ curl_setopt($channel, CURLOPT_RETURNTRANSFER,true);
 curl_setopt($channel, CURLOPT_SSL_VERIFYPEER, false);
 $result = curl_exec($channel);
 curl_close ($channel);
+  
+}
+exit;
 ?>
