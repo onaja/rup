@@ -60,18 +60,18 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
   }
-  count = 1;
+ int count = 1;
     if(count == 1){
       $arrPostData = array();
       $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken']; 
       $arrPostData['messages'][0]['type'] = "text";
-      $arrPostData['messages'][0]['text'] = 'count 1';
+      $arrPostData['messages'][0]['text'] = 'นับ 1';
     }
      if(count == 2){
       $arrPostData = array();
       $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
       $arrPostData['messages'][0]['type'] = "text";
-      $arrPostData['messages'][0]['text'] = 'count 2';
+      $arrPostData['messages'][0]['text'] = 'นับ 2';
     }
 }
 
