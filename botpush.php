@@ -61,17 +61,17 @@ else{
   }
   
   else{
-    $arrPostData = array();
+    $arrPostData['to'] = $id;
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
-    $arrayPostData['messages'][1]['type'] = "sticker";
-    $arrayPostData['messages'][1]['packageId'] = "2";
-    $arrayPostData['messages'][1]['stickerId'] = "34";
-    pushMsg($arrayHeader,$arrayPostData);
+    $arrPostData['messages'][1]['type'] = "sticker";
+    $arrPostData['messages'][1]['packageId'] = "2";
+    $arrPostData['messages'][1]['stickerId'] = "34";
+    pushMsg($arrHeader,$arrPostData);
   }
  }
-function pushMsg($arrayHeader,$arrayPostData){
+function pushMsg($arrHeader,$arrayPostData){
 $strUrl = "https://api.line.me/v2/bot/message/push";
 $channel = curl_init();
 curl_setopt($channel, CURLOPT_URL,$strUrl);
