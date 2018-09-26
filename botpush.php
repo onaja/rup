@@ -65,13 +65,13 @@ if (strpos($_msg, 'สอนบอท') !== false) {
       $arrPostData = array();
       $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken']; 
       $arrPostData['messages'][0]['type'] = "text";
-      $arrPostData['messages'][0]['text'] = count 1;
+      $arrPostData['messages'][0]['text'] = 'count 1';
     }
      if(count == 2){
       $arrPostData = array();
       $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
       $arrPostData['messages'][0]['type'] = "text";
-      $arrPostData['messages'][0]['text'] = count 2;
+      $arrPostData['messages'][0]['text'] = 'count 2';
     }
 }
 
