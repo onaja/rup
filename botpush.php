@@ -64,7 +64,7 @@ else{
     $arrPostData['messages'][0]['text'] = 'นับ';
   }
   
-  else{
+  else if($_msg !== NULL){
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
