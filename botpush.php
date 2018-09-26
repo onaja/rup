@@ -56,10 +56,9 @@ else{
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = $rec->system;
    } 
-    $count = $count + 1;
   }
   
-  else if($count != NULL){
+  else if($count == 0){
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
