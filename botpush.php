@@ -18,6 +18,7 @@ $url = 'https://api.mlab.com/api/1/databases/rup_db/collections/yes?apiKey='.$ap
 $json = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/yes?apiKey='.$api_key.'&q={"user":"'.$_msg.'"}');
 $data = json_decode($json);
 $isData=sizeof($data);
+$count = 0;
 
 if (strpos($_msg, 'สอนบอท') !== false) {
   if (strpos($_msg, 'สอนบอท') !== false) {
@@ -48,6 +49,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   }
 }
 else{
+  count++;
   if($isData >0){
    foreach($data as $rec){
     $arrPostData = array();
@@ -57,14 +59,12 @@ else{
    } 
   }
   
-  else if($arrJson['events'][0]['message']['text'] == "ชื่ออะไร"){
-    $count = 1;
-    if($count == 1){
+  else if($count == 1){
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'เทส';
-    }
+    $count = 0;
   }
   
   else{
