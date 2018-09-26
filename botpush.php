@@ -62,7 +62,6 @@ else{
   
   else{
     $arrPostData['to'] = $id;
-    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
     $arrPostData['messages'][1]['type'] = "sticker";
@@ -71,7 +70,7 @@ else{
     pushMsg($arrHeader,$arrPostData);
   }
  }
-function pushMsg($arrHeader,$arrayPostData){
+function pushMsg($arrHeader,$arrPostData){
 $strUrl = "https://api.line.me/v2/bot/message/push";
 $channel = curl_init();
 curl_setopt($channel, CURLOPT_URL,$strUrl);
