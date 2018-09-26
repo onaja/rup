@@ -64,14 +64,14 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     if($count == 1){
       $arrPostData = array();
       $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken']; 
-      $arrPostData['messages'][0]['type'] = "text";
-      $arrPostData['messages'][0]['text'] = 'นับ 1';
+      $arrPostData['messages'][1]['type'] = "text";
+      $arrPostData['messages'][1]['text'] = 'นับ 1';
     }
      if($count == 2){
       $arrPostData = array();
       $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-      $arrPostData['messages'][0]['type'] = "text";
-      $arrPostData['messages'][0]['text'] = 'นับ 2';
+      $arrPostData['messages'][1]['type'] = "text";
+      $arrPostData['messages'][1]['text'] = 'นับ 2';
     }
   }
 }
