@@ -58,13 +58,12 @@ else{
   }
   
   else if($_msg !== NULL){
+    $count = 1;
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
-    
-    $arrPostData['messages'][0]['type'] = "text2";
-    $arrPostData['messages'][0]['text2'] = 'นับ';
+    $arrPostData['messages'][0]['text'] = $count;
+   
   }
  }
 
