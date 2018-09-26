@@ -62,9 +62,9 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     
     $count = 1;
     $arrPostData = array();
-      $arrPostData['replyToken'] = $arrJson['events'][1]['replyToken']; 
+      $arrPostData['replyToken1'] = $arrJson['events'][1]['replyToken1']; 
       $arrPostData['messages'][1]['type'] = "text";
-      $arrPostData['messages'][1]['text'] = $count;
+      $arrPostData['messages'][1]['text'] = 'นับ 1';
     
     
   }
