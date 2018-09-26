@@ -54,12 +54,19 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = $rec->system;
    }
+    
+  else if($_msg != null){
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = 'นับ';
+  }
+    
   }else{
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
-    $arrPostData['messages'][0]['text'] = 'ะพกั';
     
       }
   }
