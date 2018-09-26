@@ -49,13 +49,13 @@ if (strpos($_msg, 'สอนบอท') !== false) {
   }
 }
 else{
-  count++;
   if($isData >0){
    foreach($data as $rec){
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = $rec->system;
+    $count = $count + 1;
    } 
   }
   
