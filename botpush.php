@@ -63,9 +63,9 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $count = 1
       if($count == 1){
          $arrPostData = array();
-         $arrPostData2['replyToken'] = $arrJson['events'][0]['replyToken'];
-         $arrPostData2['messages'][0]['type'] = "text";
-         $arrPostData2['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
+         $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+         $arrPostData['messages'][0]['type'] = "text";
+         $arrPostData['messages'][0]['text'] = '123';
       }
   }
 }
