@@ -55,7 +55,7 @@ if (strpos($_msg, 'สอนบอท') !== false) {
     $arrPostData['messages'][0]['text'] = $rec->system;
    }
     
-  else if($_msg != null){
+  else if($_msg!== NULL){
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
