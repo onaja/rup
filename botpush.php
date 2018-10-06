@@ -19,52 +19,52 @@
     $data = json_decode($json);
     $isData=sizeof($data);
 
-    if ($message == "สอนบอท") {
-        if ($message == "สอนบอท") {
-            $x_tra = str_replace("สอนบอท","", $message);
-            $pieces = explode("|", $x_tra);
-            $_user=str_replace("[","",$pieces[0]);
-            $_system=str_replace("]","",$pieces[1]);
-            //Post New Data
-            $newData = json_encode(
-            array(
-            'user' => $_user,
-            'system'=> $_system
-            )
-        );
-        $opts = array(
-        'http' => array(
-        'method' => "POST",
-        'header' => "Content-type: application/json",
-        'content' => $newData
+    if (strpos($message, 'สอนบอท') !== false) {
+  if (strpos($messgae, 'สอนบอท') !== false) {
+    $x_tra = str_replace("สอนบอท","", $message);
+    $pieces = explode("|", $x_tra);
+    $_user = str_replace("[","",$pieces[0]);
+    $_system = str_replace("]","",$pieces[1]);
+    //Post New Data
+    $newData = json_encode(
+      array(
+        'user' => $_user,
+        'system'=> $_system
+      )
+    );
+    $opts = array(
+      'http' => array(
+          'method' => "POST",
+          'header' => "Content-type: application/json",
+          'content' => $newData
        )
     );
     $context = stream_context_create($opts);
     $returnValue = file_get_contents($url,false,$context);
-    $arrayPostData['to'] = $id;
+    $arrayPostData = array();
     $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
     $arrayPostData['messages'][0]['type'] = "text";
     $arrayPostData['messages'][0]['text'] = 'ขอบคุณที่สอนจ้า';
     replyMsg($arrayHeader,$arrayPostData);
   }
-}
 }else{
   if($isData >0){
    foreach($data as $rec){
-    $arrayPostData['to'] = $id;
+    $arrayPostData = array();
     $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
     $arrayPostData['messages'][0]['type'] = "text";
     $arrayPostData['messages'][0]['text'] = $rec->system;
     replyMsg($arrayHeader,$arrayPostData);
    }
   }else{
-    $arrayPostData['to'] = $id;
+    $arrayPostData = array();
     $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
     $arrayPostData['messages'][0]['type'] = "text";
     $arrayPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
     replyMsg($arrayHeader,$arrayPostData);
   }
 }
+ 
  
 
 /*#ตัวอย่าง Message Type "Text"
