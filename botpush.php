@@ -22,25 +22,25 @@
     $isData=sizeof($data);
 
     $count = 0;
-    while(true){
+ 
     if (strpos($message, 'สอนบอท') !== false) {
-  if (strpos($message, 'สอนบอท') !== false) {
-    $x_tra = str_replace("สอนบอท","", $message);
-    $pieces = explode("|", $x_tra);
-    $_user=str_replace("[","",$pieces[0]);
-    $_system=str_replace("]","",$pieces[1]);
-    //Post New Data
-    $newData = json_encode(
-      array(
-        'user' => $_user,
-        'system'=> $_system
-      )
-    );
-    $opts = array(
-      'http' => array(
-          'method' => "POST",
-          'header' => "Content-type: application/json",
-          'content' => $newData
+         if (strpos($message, 'สอนบอท') !== false) {
+            $x_tra = str_replace("สอนบอท","", $message);
+            $pieces = explode("|", $x_tra);
+            $_user=str_replace("[","",$pieces[0]);
+            $_system=str_replace("]","",$pieces[1]);
+             //Post New Data
+            $newData = json_encode(
+              array(
+                'user' => $_user,
+                'system'=> $_system
+              )
+            );
+        $opts = array(
+           'http' => array(
+           'method' => "POST",
+           'header' => "Content-type: application/json",
+           'content' => $newData
        )
     );
     $context = stream_context_create($opts);
@@ -81,7 +81,7 @@
     
   }
 }
-    }
+    
 
  
  
