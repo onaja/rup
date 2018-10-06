@@ -69,13 +69,14 @@
     
    }
   }else{
+    $count++;
     $arrayPostData['to'] = $id;
     $arrayPostData = array();
     $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
     $arrayPostData['messages'][0]['type'] = "text";
     $arrayPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
     $arrayPostData['messages'][1]['type'] = "text";
-    $arrayPostData['messages'][1]['text'] = 'นับ';
+    $arrayPostData['messages'][1]['text'] = $count;
     replyMsg($arrayHeader,$arrayPostData);
     
   }
