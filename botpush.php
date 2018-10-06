@@ -19,11 +19,53 @@
     $data = json_decode($json);
     $isData=sizeof($data);
 
+    if (strpos($_msg, 'สอนบอท') !== false) {
+        if (strpos($_msg, 'สอนบอท') !== false) {
+            $x_tra = str_replace("สอนบอท","", $_msg);
+            $pieces = explode("|", $x_tra);
+            $_user=str_replace("[","",$pieces[0]);
+            $_system=str_replace("]","",$pieces[1]);
+            //Post New Data
+            $newData = json_encode(
+            array(
+            'user' => $_user,
+            'system'=> $_system
+            )
+        );
+        $opts = array(
+        'http' => array(
+        'method' => "POST",
+        'header' => "Content-type: application/json",
+        'content' => $newData
+       )
+    );
+    $context = stream_context_create($opts);
+    $returnValue = file_get_contents($url,false,$context);
+    $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+    $arrayPostData['messages'][0]['type'] = "text";
+    $arrayPostData['messages'][0]['text'] = 'ขอบคุณที่สอนจ้า';
+    replyMsg($arrayHeader,$arrayPostData);
+  }
+}
+}else{
+  if($isData >0){
+   foreach($data as $rec){
+    $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+    $arrayPostData['messages'][0]['type'] = "text";
+    $arrayPostData['messages'][0]['text'] = $rec->answer;
+    replyMsg($arrayHeader,$arrayPostData);
+   }
+  }else{
+    $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+    $arrayPostData['messages'][0]['type'] = "text";
+    $arrayPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
+    replyMsg($arrayHeader,$arrayPostData);
+  }
+}
+ 
 
-
-
-#ตัวอย่าง Message Type "Text"
-    if($message == "สวัสดี"){
+/*#ตัวอย่าง Message Type "Text"
+    else if($message == "สวัสดี"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
@@ -65,7 +107,7 @@
         $arrayPostData['messages'][1]['packageId'] = "1";
         $arrayPostData['messages'][1]['stickerId'] = "131";
         replyMsg($arrayHeader,$arrayPostData);
-    }
+    }*/
 function replyMsg($arrayHeader,$arrayPostData){
         $strUrl = "https://api.line.me/v2/bot/message/reply";
         $ch = curl_init();
