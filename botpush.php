@@ -19,8 +19,8 @@
     $data = json_decode($json);
     $isData=sizeof($data);
 
-    if (strpos($message, 'สอนบอท') !== false) {
-        if (strpos($message, 'สอนบอท') !== false) {
+    if ($message == "สอนบอท") {
+        if ($message == "สอนบอท") {
             $x_tra = str_replace("สอนบอท","", $message);
             $pieces = explode("|", $x_tra);
             $_user=str_replace("[","",$pieces[0]);
