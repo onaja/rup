@@ -21,6 +21,8 @@
     $data = json_decode($json);
     $isData=sizeof($data);
 
+    $count = 0;
+
     if (strpos($message, 'สอนบอท') !== false) {
   if (strpos($message, 'สอนบอท') !== false) {
     $x_tra = str_replace("สอนบอท","", $message);
@@ -52,6 +54,7 @@
     $arrayPostData['messages'][1]['packageId'] = "2";
     $arrayPostData['messages'][1]['stickerId'] = "41";
     replyMsg($arrayHeader,$arrayPostData);
+    $count++;
   }
 }
  else{
@@ -63,6 +66,7 @@
     $arrayPostData['messages'][0]['type'] = "text";
     $arrayPostData['messages'][0]['text'] = $rec->system;
     replyMsg($arrayHeader,$arrayPostData);
+    $count++;
    }
   }else{
     $arrayPostData['to'] = $id;
@@ -71,7 +75,18 @@
     $arrayPostData['messages'][0]['type'] = "text";
     $arrayPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
     replyMsg($arrayHeader,$arrayPostData);
+    $count++;
   }
+}
+
+if($count == 3){
+    $arrayPostData['to'] = $id;
+    $arrayPostData = array();
+    $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+    $arrayPostData['messages'][0]['type'] = "text";
+    $arrayPostData['messages'][0]['text'] = 'ผมมีคำถามจะมาถามคุณ';
+    replyMsg($arrayHeader,$arrayPostData);
+    $count = 0;
 }
  
  
