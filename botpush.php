@@ -12,7 +12,7 @@ $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
 
 $_msg = $arrJson['events'][0]['message']['text'];
-$id = $arrayJson['events'][0]['source']['userId'];
+$id = $arrJson['events'][0]['source']['userId'];
 
 
 $api_key="flAOZDL2-6BNiSZ-XqZc0FAKrYEo2dc3";
