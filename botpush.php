@@ -22,7 +22,7 @@
     $isData=sizeof($data);
 
     $count = 0;
-
+    while(true){
     if (strpos($message, 'สอนบอท') !== false) {
   if (strpos($message, 'สอนบอท') !== false) {
     $x_tra = str_replace("สอนบอท","", $message);
@@ -81,7 +81,7 @@
     
   }
 }
-
+    }
 
  
  
