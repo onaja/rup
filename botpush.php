@@ -41,6 +41,7 @@
     );
     $context = stream_context_create($opts);
     $returnValue = file_get_contents($url,false,$context);
+    $arrayPostData['to'] = $id;
     $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
     $arrayPostData['messages'][0]['type'] = "text";
     $arrayPostData['messages'][0]['text'] = 'ขอบคุณที่สอนจ้า';
@@ -50,12 +51,14 @@
 }else{
   if($isData >0){
    foreach($data as $rec){
+    $arrayPostData['to'] = $id;
     $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
     $arrayPostData['messages'][0]['type'] = "text";
     $arrayPostData['messages'][0]['text'] = $rec->system;
     replyMsg($arrayHeader,$arrayPostData);
    }
   }else{
+    $arrayPostData['to'] = $id;
     $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
     $arrayPostData['messages'][0]['type'] = "text";
     $arrayPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
