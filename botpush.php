@@ -13,6 +13,15 @@
     //รับ id ของผู้ใช้
     $id = $arrayJson['events'][0]['source']['userId'];    
 
+    $api_key="flAOZDL2-6BNiSZ-XqZc0FAKrYEo2dc3";
+    $url = 'https://api.mlab.com/api/1/databases/rup_db/collections/yes?apiKey='.$api_key.'';
+    $json = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/yes?apiKey='.$api_key.'&q={"user":"'.$_msg.'"}');
+    $data = json_decode($json);
+    $isData=sizeof($data);
+
+
+
+
 #ตัวอย่าง Message Type "Text"
     if($message == "สวัสดี"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
