@@ -13,6 +13,8 @@
     //รับ id ของผู้ใช้
     $id = $arrayJson['events'][0]['source']['userId'];    
 
+    $strUrl = "https://api.line.me/v2/bot/message/reply";
+
     $api_key="flAOZDL2-6BNiSZ-XqZc0FAKrYEo2dc3";
     $url = 'https://api.mlab.com/api/1/databases/rup_db/collections/yes?apiKey='.$api_key.'';
     $json = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/yes?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
@@ -20,34 +22,34 @@
     $isData=sizeof($data);
 
     if (strpos($message, 'สอนบอท') !== false) {
-        if (strpos($messgae, 'สอนบอท') !== false) {
-        $x_tra = str_replace("สอนบอท","", $message);
-        $pieces = explode("|", $x_tra);
-        $_user = str_replace("[","",$pieces[0]);
-        $_system = str_replace("]","",$pieces[1]);
-        //Post New Data
-        $newData = json_encode(
-        array(
-            'user' => $_user,
-            'system'=> $_system
-        )
-        );
-        $opts = array(
-            'http' => array(
-            'method' => "POST",
-            'header' => "Content-type: application/json",
-            'content' => $newData
+  if (strpos($message, 'สอนบอท') !== false) {
+    $x_tra = str_replace("สอนบอท","", $message);
+    $pieces = explode("|", $x_tra);
+    $_user=str_replace("[","",$pieces[0]);
+    $_system=str_replace("]","",$pieces[1]);
+    //Post New Data
+    $newData = json_encode(
+      array(
+        'user' => $_user,
+        'system'=> $_system
+      )
+    );
+    $opts = array(
+      'http' => array(
+          'method' => "POST",
+          'header' => "Content-type: application/json",
+          'content' => $newData
        )
-       );
-        $context = stream_context_create($opts);
-        $returnValue = file_get_contents($url,false,$context);
-        $arrayPostData = array();
-        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = 'ขอบคุณที่สอนจ้า';
-        replyMsg($arrayHeader,$arrayPostData);
-        }
-    }
+    );
+    $context = stream_context_create($opts);
+    $returnValue = file_get_contents($url,false,$context);
+    $arrayPostData = array();
+    $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+    $arrayPostData['messages'][0]['type'] = "text";
+    $arrayPostData['messages'][0]['text'] = 'ขอบคุณที่สอนจ้า';
+    replyMsg($arrayHeader,$arrayPostData);
+  }
+}
  else{
   if($isData >0){
    foreach($data as $rec){
