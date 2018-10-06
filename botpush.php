@@ -15,13 +15,13 @@
 
     $api_key="flAOZDL2-6BNiSZ-XqZc0FAKrYEo2dc3";
     $url = 'https://api.mlab.com/api/1/databases/rup_db/collections/yes?apiKey='.$api_key.'';
-    $json = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/yes?apiKey='.$api_key.'&q={"user":"'.$_msg.'"}');
+    $json = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/yes?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
     $data = json_decode($json);
     $isData=sizeof($data);
 
-    if (strpos($_msg, 'สอนบอท') !== false) {
-        if (strpos($_msg, 'สอนบอท') !== false) {
-            $x_tra = str_replace("สอนบอท","", $_msg);
+    if (strpos($message, 'สอนบอท') !== false) {
+        if (strpos($message, 'สอนบอท') !== false) {
+            $x_tra = str_replace("สอนบอท","", $message);
             $pieces = explode("|", $x_tra);
             $_user=str_replace("[","",$pieces[0]);
             $_system=str_replace("]","",$pieces[1]);
