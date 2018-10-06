@@ -52,7 +52,7 @@
    foreach($data as $rec){
     $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
     $arrayPostData['messages'][0]['type'] = "text";
-    $arrayPostData['messages'][0]['text'] = $rec->answer;
+    $arrayPostData['messages'][0]['text'] = $rec->system;
     replyMsg($arrayHeader,$arrayPostData);
    }
   }else{
