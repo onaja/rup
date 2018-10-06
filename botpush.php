@@ -64,6 +64,9 @@
     $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
     $arrayPostData['messages'][0]['type'] = "text";
     $arrayPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
+    $arrayPostData['messages'][1]['type'] = "sticker";
+    $arrayPostData['messages'][1]['packageId'] = "2";
+    $arrayPostData['messages'][1]['stickerId'] = "41";
     replyMsg($arrayHeader,$arrayPostData);
   }
 }
