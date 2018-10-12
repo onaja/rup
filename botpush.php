@@ -76,7 +76,7 @@
     $arrayPostData['messages'][0]['type'] = "text";
     $arrayPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
     $arrayPostData['messages'][1]['type'] = "text";
-    $arrayPostData['messages'][1]['text'] = $count;
+    $arrayPostData['messages'][1]['text'] = $id;
     replyMsg($arrayHeader,$arrayPostData);
     
   }
