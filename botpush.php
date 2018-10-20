@@ -77,26 +77,9 @@
     $arrayPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
     $arrayPostData['messages'][1]['type'] = "text";
     $arrayPostData['messages'][1]['text'] = $id;
-    $arrayPostData['messeges'][2]['type'] = "template";
-    $arrayPostData['messages'][2]['altText'] = 'test';
-    $arrayPostData['messages'][2]['template'] = {
-      "type": "confirm",
-      "text": "Are you sure?",
-      "actions": [
-          {
-            "type": "message",
-            "label": "Yes",
-            "text": "yes"
-          },
-          {
-            "type": "message",
-            "label": "No",
-            "text": "no"
-          }
-      ]
-  }
-    
-    
+    $arrayPostData['messeges'][2]['type'] = "confirm";
+    $arrayPostData['messages'][2]['actions'] = 'test';
+   
     replyMsg($arrayHeader,$arrayPostData);
     
   }
