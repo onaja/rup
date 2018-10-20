@@ -62,7 +62,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
    
     // แปลงข้อความรูปแบบ JSON  ให้อยู่ในโครงสร้างตัวแปร array
     $events = json_decode($content, true);
-
+    $arrayJson = json_decode($content, true);
     if(!is_null($events)){
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
     $replyToken = $events['events'][0]['replyToken'];
@@ -130,18 +130,27 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                 case "B":
                     if($isData >0){
                        foreach($data as $rec){
-                            $textReplyMessage = $rec->system;
-                            $textMessage = new TextMessageBuilder($textReplyMessage);
-                            $textReplyMessage2 = "ดอ";
-                            $textMessage2 = new TextMessageBuilder($textReplyMessage2);       
-                           
-                            $multiMessage = new MultiMessageBuilder;
-                            $multiMessage->add($textMessage);     
-                            $multiMessage->add($textMessage2);  
-                            $replyData = $multiMessage; 
+                        $arrayPostData['to'] = $id;
+                        $arrayPostData = array();
+                        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+                        $arrayPostData['messages'][0]['type'] = "text";
+                        $arrayPostData['messages'][0]['text'] = $rec->system;
+                        replyMsg($arrayHeader,$arrayPostData);
+
                        }
-                      }else{}
-                  
+                      }else{
+
+                        $arrayPostData['to'] = $id;
+                        $arrayPostData = array();
+                        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+                        $arrayPostData['messages'][0]['type'] = "text";
+                        $arrayPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
+                        $arrayPostData['messages'][1]['type'] = "text";
+                        $arrayPostData['messages'][1]['text'] = $id;
+                        replyMsg($arrayHeader,$arrayPostData);
+
+                      }
+                    }
                     break;      
                 case "C":
                     $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
@@ -239,23 +248,6 @@ echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
     $arrayPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
     $arrayPostData['messages'][1]['type'] = "text";
     $arrayPostData['messages'][1]['text'] = $id;
-    $arrayPostData['messeges'][2]['type'] = "confirm";
-    $arrayPostData['messages'][2]['text'] = 'kuy';
-    $arrayPostData['messages'][2]['actions'] = new TemplateMessageBuilder('Confirm Template',
-        new ConfirmTemplateBuilder(
-                'Confirm template builder', // ข้อความแนะนำหรือบอกวิธีการ หรือคำอธิบาย
-                array(
-                    new MessageTemplateActionBuilder(
-                        'Yes', // ข้อความสำหรับปุ่มแรก
-                        'YES'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                    ),
-                    new MessageTemplateActionBuilder(
-                        'No', // ข้อความสำหรับปุ่มแรก
-                        'NO' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                    )
-                )
-        )
-    );
     replyMsg($arrayHeader,$arrayPostData);
     
   }
