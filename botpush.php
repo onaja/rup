@@ -128,13 +128,20 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $replyData = $multiMessage;   
                     break;
                 case "B":
-                    $textReplyMessage = "ดอ" ;
-                    $textMessage = new TextMessageBuilder($textReplyMessage);
-                    
-                    $multiMessage = new MultiMessageBuilder;
-                    $multiMessage->add($textMessage);             
-                    $replyData = $multiMessage; 
-                    
+                    if($isData >0){
+                       foreach($data as $rec){
+                            $textReplyMessage = $rec->system;
+                            $textMessage = new TextMessageBuilder($textReplyMessage);
+                            $textReplyMessage2 = "ดอ";
+                            $textMessage2 = new TextMessageBuilder($textReplyMessage2);       
+                           
+                            $multiMessage = new MultiMessageBuilder;
+                            $multiMessage->add($textMessage);     
+                            $multiMessage->add($textMessage2);  
+                            $replyData = $multiMessage; 
+                       }
+                      }
+                  
                     break;      
                 case "C":
                     $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
