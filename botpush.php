@@ -102,7 +102,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
    foreach($data as $rec){
     $arrayPostData['to'] = $id;
     $arrayPostData = array();
-    $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+    $arrayPostData['replyToken'] = $events['events'][0]['replyToken'];
     $arrayPostData['messages'][0]['type'] = "text";
     $arrayPostData['messages'][0]['text'] = $rec->system;
     replyMsg($arrayHeader,$arrayPostData);
