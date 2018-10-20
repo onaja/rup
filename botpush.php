@@ -109,7 +109,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
             $textReplyMessage = json_encode($events);
             $replyData = new TextMessageBuilder($textReplyMessage);         
             break;  
-    }
+    
 }
  
 // Failed
