@@ -69,6 +69,22 @@
     
    }
   }else{
+    $actionBuilder = array(
+        new MessageTemplateActionBuilder(
+            'ใช่',// ข้อความแสดงในปุ่ม
+            'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+    ),
+        new MessageTemplateActionBuilder(
+            'ไม่',// ข้อความแสดงในปุ่ม
+            'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+    ),
+        new MessageTemplateActionBuilder(
+            'สอนบอท',// ข้อความแสดงในปุ่ม
+            'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+    ),
+      
+      
+    /*
     $arrayPostData['to'] = $id;
     $arrayPostData = array();
     $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
@@ -81,7 +97,7 @@
     $arrayPostData['template'][2]['action']['label'] = 'yes';
     $arrayPostData['template'][2]['action']['text'] = 'yes';
     replyMsg($arrayHeader,$arrayPostData);
-    
+    */
   }
 }
     
