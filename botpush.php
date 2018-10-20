@@ -77,31 +77,18 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
         case 'text':
             switch ($message) {
                 case "A":
-                     $textReplyMessage = "ขอบคุณที่สอนจ้า";
-                     $textMessage = new TextMessageBuilder($textReplyMessage);
-                     $stickerID = 41;
-                     $packageID = 2;
-                     $stickerMessage = new StickerMessageBuilder($packageID,$stickerID);
-                    
-                     $multiMessage = new MultiMessageBuilder;
-                     $multiMessage->add($textMessage);   
-                     $multiMessage->add($stickerMessage);                 
-                     $replyData = $multiMessage;   
+                    $textReplyMessage = "สวัสดีครับผม Dr.P ยินดีรับใช้";
+                    $replyData = new TextMessageBuilder($textReplyMessage);
                     break;
-                case "B":
+                case "สติ๊กเกอร์":
                     $stickerID = 22;
                     $packageID = 2;
                     $replyData = new StickerMessageBuilder($packageID,$stickerID);
                     break;      
-                
-                default:    
-                     $textReplyMessage = "ว่ายังไงนะครับ";
-                     $textMessage = new TextMessageBuilder($textReplyMessage);
                     
-                     $multiMessage = new MultiMessageBuilder;
-                     $multiMessage->add($textMessage);                
-                     $replyData = $multiMessage;   
-                    }
+                default:
+                    $textReplyMessage = "ว่ายังไงนะครับ";
+                    $textMessage = new TextMessageBuilder($textReplyMessage);
                     break;                                      
             }
             break;
@@ -109,7 +96,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
             $textReplyMessage = json_encode($events);
             $replyData = new TextMessageBuilder($textReplyMessage);         
             break;  
-    
+    }
 }
  
 // Failed
