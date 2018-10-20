@@ -140,7 +140,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                             $multiMessage->add($textMessage2);  
                             $replyData = $multiMessage; 
                        }
-                      }
+                      }else{}
                   
                     break;      
                 case "C":
