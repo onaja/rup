@@ -90,7 +90,7 @@
             "label": "No",
             "text": "no"
           }
-      ]
+      ];
     replyMsg($arrayHeader,$arrayPostData);
     
   }
