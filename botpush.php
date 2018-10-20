@@ -117,15 +117,28 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $replyData = $multiMessage; 
                     break;
                 case "B":
-                    
-                        $textReplyMessage = $rec->system;
-                        $textMessage = new TextMessageBuilder($textReplyMessage);
+                    if($isData >0){
+                       foreach($data as $rec){
+                        $arrayPostData['to'] = $id;
+                        $arrayPostData = array();
+                        $arrayPostData['replyToken'] = $events['events'][0]['replyToken'];
+                        $arrayPostData['messages'][0]['type'] = "text";
+                        $arrayPostData['messages'][0]['text'] = $rec->system;
+                        replyMsg($arrayHeader,$arrayPostData);
 
-                        $multiMessage = new MultiMessageBuilder;
-                        $multiMessage->add($textMessage);
-                        $replyData = $multiMessage;   
+                       }
+                      }else{
 
-                      
+                        $arrayPostData['to'] = $id;
+                        $arrayPostData = array();
+                        $arrayPostData['replyToken'] = $events['events'][0]['replyToken'];
+                        $arrayPostData['messages'][0]['type'] = "text";
+                        $arrayPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
+                        $arrayPostData['messages'][1]['type'] = "text";
+                        $arrayPostData['messages'][1]['text'] = $id;
+                        replyMsg($arrayHeader,$arrayPostData);
+
+                      }
                     break;      
                     
                 default:
@@ -210,7 +223,7 @@ echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
     
   }
 }
-    
+    */
 function replyMsg($arrayHeader,$arrayPostData){
         $strUrl = "https://api.line.me/v2/bot/message/reply";
         $ch = curl_init();
@@ -224,5 +237,5 @@ function replyMsg($arrayHeader,$arrayPostData){
         $result = curl_exec($ch);
         curl_close ($ch);
     }
-   exit;*/
+   exit;
 ?>
