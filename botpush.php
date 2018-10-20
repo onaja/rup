@@ -61,17 +61,17 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $content = file_get_contents('php://input');
    
     // แปลงข้อความรูปแบบ JSON  ให้อยู่ในโครงสร้างตัวแปร array
-    $arrayJson = json_decode($content, true);
+    $events = json_decode($content, true);
 
-    if(!is_null($arrayJson)){
+    if(!is_null($events)){
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
-    $replyToken = $arrayJson['events'][0]['replyToken'];
-    $typeMessage = $arrayJson['events'][0]['message']['type'];
+    $replyToken = $events['events'][0]['replyToken'];
+    $typeMessage = $events['events'][0]['message']['type'];
     //รับข้อความจากผู้ใช้
-    $message = $arrayJson['events'][0]['message']['text'];
+    $message = $events['events'][0]['message']['text'];
     $message = strtolower($message);
     //รับ id ของผู้ใช้
-    $id = $arrayJson['events'][0]['source']['userId'];   
+    $id = $events['events'][0]['source']['userId'];   
    
                  if (strpos($message, 'สอนบอท') !== false) {
                        if (strpos($message, 'สอนบอท') !== false) {
@@ -132,7 +132,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 
   }
 }
-       $textReplyMessage = json_encode($arrayJson);
+       $textReplyMessage = json_encode($events);
        $replyData = new TextMessageBuilder($textReplyMessage);         
             
     
