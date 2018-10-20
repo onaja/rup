@@ -69,21 +69,22 @@
     
    }
   }else{
-    $actionBuilder = array(
-        new MessageTemplateActionBuilder(
-            'ใช่',// ข้อความแสดงในปุ่ม
-            'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-    ),
-        new MessageTemplateActionBuilder(
-            'ไม่',// ข้อความแสดงในปุ่ม
-            'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-    ),
-        new MessageTemplateActionBuilder(
-            'สอนบอท',// ข้อความแสดงในปุ่ม
-            'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-    ),
-      
-      
+    $arrayPostData = new TemplateMessageBuilder('Confirm Template',
+                            new ConfirmTemplateBuilder(
+                                    'Confirm template builder', // ข้อความแนะนหรือบอกวิธีการ หรือคำอธิบาย
+                                    array(
+                                        new MessageTemplateActionBuilder(
+                                            'Yes', // ข้อความสำหรับปุ่มแรก
+                                            'YES'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                        ),
+                                        new MessageTemplateActionBuilder(
+                                            'No', // ข้อความสำหรับปุ่มแรก
+                                            'NO' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                        )
+                                    )
+                            )
+    );
+    replyMsg($arrayHeader,$arrayPostData);
     /*
     $arrayPostData['to'] = $id;
     $arrayPostData = array();
