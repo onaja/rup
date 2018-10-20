@@ -110,10 +110,11 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $multiMessage->add($stickerMessage);
                     $replyData = $multiMessage; 
                     break;
-                case "สติ๊กเกอร์":
-                    $stickerID = 22;
-                    $packageID = 2;
-                    $replyData = new StickerMessageBuilder($packageID,$stickerID);
+                case "$isData >0":
+                    foreach($data as $rec){
+                    $textReplyMessage = $rec->system;
+                    $textMessage = new TextMessageBuilder($textReplyMessage);
+                    }
                     break;      
                 case "กล่อง":
                     $replyData = new TemplateMessageBuilder('Confirm Template',
