@@ -118,24 +118,22 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                 case "B":
                     if($isData >0){
                        foreach($data as $rec){
-                        $arrayPostData['to'] = $id;
-                        $arrayPostData = array();
-                        $arrayPostData['replyToken'] = $events['events'][0]['replyToken'];
-                        $arrayPostData['messages'][0]['type'] = "text";
-                        $arrayPostData['messages'][0]['text'] = $rec->system;
-                        replyMsg($arrayHeader,$arrayPostData);
+                        $textReplyMessage = $rec->system;
+                        $textMessage = new TextMessageBuilder($textReplyMessage);
+                           
+                        $multiMessage =     new MultiMessageBuilder;
+                        $multiMessage->add($textMessage);       
+                        $replyData = $multiMessage;   
 
                        }
                       }else{
-
-                        $arrayPostData['to'] = $id;
-                        $arrayPostData = array();
-                        $arrayPostData['replyToken'] = $events['events'][0]['replyToken'];
-                        $arrayPostData['messages'][0]['type'] = "text";
-                        $arrayPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
-                        $arrayPostData['messages'][1]['type'] = "text";
-                        $arrayPostData['messages'][1]['text'] = $id;
-                        replyMsg($arrayHeader,$arrayPostData);
+                        
+                        $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
+                        $textMessage = new TextMessageBuilder($textReplyMessage);
+                           
+                        $multiMessage =  new MultiMessageBuilder;
+                        $multiMessage->add($textMessage);       
+                        $replyData = $multiMessage;   
 
                       }
                     }
