@@ -77,9 +77,35 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     switch ($typeMessage){
         case 'text':
             switch ($message) {
-                case "ดี":
-                    $textReplyMessage = "สวัสดีครับผม Dr.P ยินดีรับใช้";
-                    $replyData = new TextMessageBuilder($textReplyMessage);
+                case "สอนบอท":
+                    $x_tra = str_replace("สอนบอท","", $message);
+                            $pieces = explode("|", $x_tra);
+                            $_user=str_replace("[","",$pieces[0]);
+                            $_system=str_replace("]","",$pieces[1]);
+                             //Post New Data
+                            $newData = json_encode(
+                              array(
+                                'user' => $_user,
+                                'system'=> $_system
+                              )
+                            );
+                        $opts = array(
+                           'http' => array(
+                           'method' => "POST",
+                           'header' => "Content-type: application/json",
+                           'content' => $newData
+                       )
+                    );
+                    $context = stream_context_create($opts);
+                    $returnValue = file_get_contents($url,false,$context);
+                    
+                    $textReplyMessage = "ขอบคุณที่สอนจ้า";
+                    $textMessage = new TextMessageBuilder($textReplyMessage);
+                    
+                    $multiMessage = new MultiMessageBuilder;
+                    $multiMessage->add($textMessage);
+                    
+                    $replyData = $multiMessage; 
                     break;
                 case "สติ๊กเกอร์":
                     $stickerID = 22;
