@@ -89,6 +89,10 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                 default:
                     $textReplyMessage = "ว่ายังไงนะครับ";
                     $textMessage = new TextMessageBuilder($textReplyMessage);
+                    
+                    $multiMessage = new MultiMessageBuilder;
+                    $multiMessage->add($textMessage);
+                    $replyData = $multiMessage;   
                     break;                                      
             }
             break;
