@@ -102,56 +102,41 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 }
     switch ($typeMessage){
         case 'text':
-            switch ($message) {
+            switch ($userMessage) {
                 case "A":
-                    $textReplyMessage = "ขอบคุณที่สอนจ้า";
-                    $textMessage = new TextMessageBuilder($textReplyMessage);
-                    $stickerID = 41;
-                    $packageID = 2;
-                    $stickerMessage = new StickerMessageBuilder($packageID,$stickerID);
+                     $textReplyMessage = "ขอบคุณที่สอนจ้า";
+                     $textMessage = new TextMessageBuilder($textReplyMessage);
+                     $stickerID = 41;
+                     $packageID = 2;
+                     $stickerMessage = new StickerMessageBuilder($packageID,$stickerID);
                     
-                    $multiMessage =     new MultiMessageBuilder;
-                    $multiMessage->add($textMessage);
-                    $multiMessage->add($stickerMessage);         
-                    $replyData = $multiMessage;   
+                     $multiMessage = new MultiMessageBuilder;
+                     $multiMessage->add($textMessage);   
+                     $multiMessage->add($stickerMessage);                 
+                     $replyData = $multiMessage;   
                     break;
                 case "B":
+                    $stickerID = 22;
+                    $packageID = 2;
+                    $replyData = new StickerMessageBuilder($packageID,$stickerID);
+                    break;      
+                
+                default:    
+                     $textReplyMessage = "ว่ายังไงนะครับ";
+                     $textMessage = new TextMessageBuilder($textReplyMessage);
                     
-                       
-                        $textReplyMessage = "ดึง";
-                        $textMessage = new TextMessageBuilder($textReplyMessage);
-                           
-                        $multiMessage =     new MultiMessageBuilder;
-                        $multiMessage->add($textMessage);       
-                        $replyData = $multiMessage;   
-   
-                break;      
-            
-                default:
-                    $textReplyMessage = "มาไงวะ";
-                    $textMessage = new TextMessageBuilder($textReplyMessage);
-                    $textReplyMessage2 = $id;
-                    $textMessage2 = new TextMessageBuilder($textReplyMessage2);
-                    
-                    $multiMessage = new MultiMessageBuilder;
-                    $multiMessage->add($textMessage);
-                    $multiMessage->add($textMessage2);         
-                    $replyData = $multiMessage; 
-                break;
+                     $multiMessage = new MultiMessageBuilder;
+                     $multiMessage->add($textMessage);                
+                     $replyData = $multiMessage;   
+                    }
+                    break;                                      
             }
-            
+            break;
         default:
             $textReplyMessage = json_encode($events);
             $replyData = new TextMessageBuilder($textReplyMessage);         
             break;  
     }
-}
-
-//l ส่วนของคำสั่งตอบกลับข้อความ
-$response = $bot->replyMessage($replyToken,$replyData);
-if ($response->isSucceeded()) {
-    echo 'Succeeded!';
-    return;
 }
  
 // Failed
