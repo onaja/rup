@@ -79,18 +79,21 @@
     $arrayPostData['messages'][1]['text'] = $id;
     $arrayPostData['messeges'][2]['type'] = "confirm";
     $arrayPostData['messages'][2]['text'] = 'kuy';
-    $arrayPostData['messages'][2]['actions'] = array(
-          {
-            'type' => "message",
-            'label' => "Yes",
-            'text' => "yes"
-          },
-          {
-            'type' => "message",
-            'label' => "No",
-            'text' => "no"
-          }
-      );
+    $arrayPostData['messages'][2]['actions'] = new TemplateMessageBuilder('Confirm Template',
+        new ConfirmTemplateBuilder(
+                'Confirm template builder', // ข้อความแนะนำหรือบอกวิธีการ หรือคำอธิบาย
+                array(
+                    new MessageTemplateActionBuilder(
+                        'Yes', // ข้อความสำหรับปุ่มแรก
+                        'YES'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                    ),
+                    new MessageTemplateActionBuilder(
+                        'No', // ข้อความสำหรับปุ่มแรก
+                        'NO' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                    )
+                )
+        )
+    );
     replyMsg($arrayHeader,$arrayPostData);
     
   }
