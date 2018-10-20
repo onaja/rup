@@ -156,7 +156,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
             $replyData = new TextMessageBuilder($textReplyMessage);         
             break;  
     }
-}
+
 //l ส่วนของคำสั่งตอบกลับข้อความ
 $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
