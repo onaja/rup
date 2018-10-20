@@ -97,7 +97,15 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $returnValue = file_get_contents($url,false,$context);
     $message = "A";
   }
-}else   {}    
+}else{
+  if($isData >0){
+   foreach($data as $rec){
+    $message = "B";
+   }
+  }else{
+    $message = "C";
+  }
+}
     switch ($typeMessage){
         case 'text':
             switch ($message) {
@@ -113,27 +121,24 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $multiMessage->add($stickerMessage);         
                     $replyData = $multiMessage;   
                     break;
-                case "สติ๊กเกอร์":
-                    $stickerID = 22;
-                    $packageID = 2;
-                    $replyData = new StickerMessageBuilder($packageID,$stickerID);
+                case "B":
+                    $textReplyMessage = $rec->system;
+                    $textMessage = new TextMessageBuilder($textReplyMessage);
+                    
+                    $multiMessage = new MultiMessageBuilder;
+                    $multiMessage->add($textMessage);
+                    $replyData = $multiMessage;   
                     break;      
-                case "กล่อง":
-                    $replyData = new TemplateMessageBuilder('Confirm Template',
-                        new ConfirmTemplateBuilder(
-                                'TEST',
-                                array(
-                                    new MessageTemplateActionBuilder(
-                                        'ใช่',
-                                        'อืม.. ใช่ คงงั้นแหละ'
-                                    ),
-                                    new MessageTemplateActionBuilder(
-                                        'ไม่',
-                                        'ไม่อะ ไม่ใช่เลย'
-                                    )
-                                )
-                        )
-                    );
+                case "C":
+                    $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
+                    $textMessage = new TextMessageBuilder($textReplyMessage);
+                    $textReplyMessage2 = $id;
+                    $textMessage2 = new TextMessageBuilder($textReplyMessage2);
+                    
+                    $multiMessage = new MultiMessageBuilder;
+                    $multiMessage->add($textMessage);
+                    $multiMessage->add($textMessage2);         
+                    $replyData = $multiMessage; 
                     break;                   
                 default:
                     $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
