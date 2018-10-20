@@ -69,31 +69,7 @@
     
    }
   }else{
-    $actionBuilder = array(
-                            new MessageTemplateActionBuilder(
-                                'ใช่',// ข้อความแสดงในปุ่ม
-                                'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ),
-                            new MessageTemplateActionBuilder(
-                                'ไม่',// ข้อความแสดงในปุ่ม
-                                'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ),
-                            new MessageTemplateActionBuilder(
-                                'สอนบอท',// ข้อความแสดงในปุ่ม
-                                'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ),
-    );
-    $imageUrl = 'https://www.picz.in.th/image/bugatti-divo-2018-z4-1920x1080.kLU71b';
-    $arrayPostData = new TemplateMessageBuilder('Button Template',
-                            new ButtonTemplateBuilder(
-                                    'button template builder', // กำหนดหัวเรื่อง
-                                    'Please select', // กำหนดรายละเอียด
-                                    $imageUrl, // กำหนด url รุปภาพ
-                                    $actionBuilder  // กำหนด action object
-                            )
-    );       
-    replyMsg($arrayHeader,$arrayPostData);
-    /*
+    
     $arrayPostData['to'] = $id;
     $arrayPostData = array();
     $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
@@ -101,12 +77,12 @@
     $arrayPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
     $arrayPostData['messages'][1]['type'] = "text";
     $arrayPostData['messages'][1]['text'] = $id;
-    $arrayPostData['template'][2]['type'] = "confirm";
-    $arrayPostData['template'][2]['text'] = 'test';
-    $arrayPostData['template'][2]['action']['label'] = 'yes';
-    $arrayPostData['template'][2]['action']['text'] = 'yes';
+    $arrayPostData['actions'][2]['type'] = "confirm";
+    $arrayPostData['messages'][2]['label'] = 'test';
+    $arrayPostData['messages'][2]['text'] = 'test';
+    
     replyMsg($arrayHeader,$arrayPostData);
-    */
+    
   }
 }
     
