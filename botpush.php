@@ -62,7 +62,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
    
     // แปลงข้อความรูปแบบ JSON  ให้อยู่ในโครงสร้างตัวแปร array
     $events = json_decode($content, true);
-    $arrayJson = json_decode($content, true);
+    
     if(!is_null($events)){
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
     $replyToken = $events['events'][0]['replyToken'];
@@ -132,7 +132,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                        foreach($data as $rec){
                         $arrayPostData['to'] = $id;
                         $arrayPostData = array();
-                        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+                        $arrayPostData['replyToken'] = $events['events'][0]['replyToken'];
                         $arrayPostData['messages'][0]['type'] = "text";
                         $arrayPostData['messages'][0]['text'] = $rec->system;
                         replyMsg($arrayHeader,$arrayPostData);
@@ -142,7 +142,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 
                         $arrayPostData['to'] = $id;
                         $arrayPostData = array();
-                        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+                        $arrayPostData['replyToken'] = $events['events'][0]['replyToken'];
                         $arrayPostData['messages'][0]['type'] = "text";
                         $arrayPostData['messages'][0]['text'] = 'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]';
                         $arrayPostData['messages'][1]['type'] = "text";
