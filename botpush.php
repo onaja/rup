@@ -78,6 +78,8 @@
     $arrayPostData['messages'][1]['text'] = $id;
     $arrayPostData['template'][2]['type'] = "confirm";
     $arrayPostData['template'][2]['text'] = 'test';
+    $arrayPostData['template'][2]['action']['label'] = 'yes';
+    $arrayPostData['template'][2]['action']['text'] = 'yes';
     replyMsg($arrayHeader,$arrayPostData);
     
   }
