@@ -102,7 +102,11 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
             break;  
     }
 }
- 
+$response = $bot->replyMessage($replyToken,$replyData);
+if ($response->isSucceeded()) {
+    echo 'Succeeded!';
+    return;
+}
 // Failed
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
  /*
