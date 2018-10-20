@@ -69,21 +69,29 @@
     
    }
   }else{
-    $arrayPostData = new TemplateMessageBuilder('Confirm Template',
-                            new ConfirmTemplateBuilder(
-                                    'Confirm template builder', // ข้อความแนะนหรือบอกวิธีการ หรือคำอธิบาย
-                                    array(
-                                        new MessageTemplateActionBuilder(
-                                            'Yes', // ข้อความสำหรับปุ่มแรก
-                                            'YES'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                                        ),
-                                        new MessageTemplateActionBuilder(
-                                            'No', // ข้อความสำหรับปุ่มแรก
-                                            'NO' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                                        )
-                                    )
-                            )
+    $actionBuilder = array(
+                            new MessageTemplateActionBuilder(
+                                'ใช่',// ข้อความแสดงในปุ่ม
+                                'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),
+                            new MessageTemplateActionBuilder(
+                                'ไม่',// ข้อความแสดงในปุ่ม
+                                'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),
+                            new MessageTemplateActionBuilder(
+                                'สอนบอท',// ข้อความแสดงในปุ่ม
+                                'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                            ),
     );
+    $imageUrl = 'https://www.picz.in.th/image/bugatti-divo-2018-z4-1920x1080.kLU71b';
+    $arrayPostData = new TemplateMessageBuilder('Button Template',
+                            new ButtonTemplateBuilder(
+                                    'button template builder', // กำหนดหัวเรื่อง
+                                    'Please select', // กำหนดรายละเอียด
+                                    $imageUrl, // กำหนด url รุปภาพ
+                                    $actionBuilder  // กำหนด action object
+                            )
+    );       
     replyMsg($arrayHeader,$arrayPostData);
     /*
     $arrayPostData['to'] = $id;
