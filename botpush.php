@@ -225,7 +225,7 @@ echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
     
   }
 }
-    */
+    
 function replyMsg($arrayHeader,$arrayPostData){
         $strUrl = "https://api.line.me/v2/bot/message/reply";
         $ch = curl_init();
@@ -239,5 +239,5 @@ function replyMsg($arrayHeader,$arrayPostData){
         $result = curl_exec($ch);
         curl_close ($ch);
     }
-   exit;
+   exit;*/
 ?>
