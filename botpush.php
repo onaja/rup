@@ -73,70 +73,86 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     //รับ id ของผู้ใช้
     $id = $events['events'][0]['source']['userId'];   
    
-                 if (strpos($message, 'สอนบอท') !== false) {
-                       if (strpos($message, 'สอนบอท') !== false) {
-                            $x_tra = str_replace("สอนบอท","", $message);
-                            $pieces = explode("|", $x_tra);
-                            $_user=str_replace("[","",$pieces[0]);
-                            $_system=str_replace("]","",$pieces[1]);
-                             //Post New Data
-                            $newData = json_encode(
-                              array(
-                                'user' => $_user,
-                                'system'=> $_system
-                              )
-                            );
-                        $opts = array(
-                           'http' => array(
-                           'method' => "POST",
-                           'header' => "Content-type: application/json",
-                           'content' => $newData
-                       )
-                    );
-                    $context = stream_context_create($opts);
-                    $returnValue = file_get_contents($url,false,$context);
+    if (strpos($message, 'สอนบอท') !== false) {
+         if (strpos($message, 'สอนบอท') !== false) {
+            $x_tra = str_replace("สอนบอท","", $message);
+            $pieces = explode("|", $x_tra);
+            $_user=str_replace("[","",$pieces[0]);
+            $_system=str_replace("]","",$pieces[1]);
+             //Post New Data
+            $newData = json_encode(
+              array(
+                'user' => $_user,
+                'system'=> $_system
+              )
+            );
+        $opts = array(
+           'http' => array(
+           'method' => "POST",
+           'header' => "Content-type: application/json",
+           'content' => $newData
+       )
+    );
+    $context = stream_context_create($opts);
+    $returnValue = file_get_contents($url,false,$context);
+    $message = "A";
+  }
+}else   {}    
+    switch ($typeMessage){
+        case 'text':
+            switch ($message) {
+                case "A":
                     $textReplyMessage = "ขอบคุณที่สอนจ้า";
                     $textMessage = new TextMessageBuilder($textReplyMessage);
                     $stickerID = 41;
                     $packageID = 2;
                     $stickerMessage = new StickerMessageBuilder($packageID,$stickerID);
                     
+                    $multiMessage =     new MultiMessageBuilder;
+                    $multiMessage->add($textMessage);
+                    $multiMessage->add($stickerMessage);         
+                    $replyData = $multiMessage;   
+                    break;
+                case "สติ๊กเกอร์":
+                    $stickerID = 22;
+                    $packageID = 2;
+                    $replyData = new StickerMessageBuilder($packageID,$stickerID);
+                    break;      
+                case "กล่อง":
+                    $replyData = new TemplateMessageBuilder('Confirm Template',
+                        new ConfirmTemplateBuilder(
+                                'TEST',
+                                array(
+                                    new MessageTemplateActionBuilder(
+                                        'ใช่',
+                                        'อืม.. ใช่ คงงั้นแหละ'
+                                    ),
+                                    new MessageTemplateActionBuilder(
+                                        'ไม่',
+                                        'ไม่อะ ไม่ใช่เลย'
+                                    )
+                                )
+                        )
+                    );
+                    break;                   
+                default:
+                    $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
+                    $textMessage = new TextMessageBuilder($textReplyMessage);
+                    $textReplyMessage2 = $id;
+                    $textMessage2 = new TextMessageBuilder($textReplyMessage2);
+                    
                     $multiMessage = new MultiMessageBuilder;
                     $multiMessage->add($textMessage);
-                    $multiMessage->add($stickerMessage);   
-                    $replyData = $multiMessage;   
-
-                  }
-                }
-                    else{
-                      if($isData >0){
-                       foreach($data as $rec){
-                        $textReplyMessage = $rec->system;
-                        $textMessage = new TextMessageBuilder($textReplyMessage);
-                        
-                        $multiMessage = new MultiMessageBuilder;
-                        $multiMessage->add($textMessage);
-                        $replyData = $multiMessage;
-                       }
-                      }else{
-
-                        $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
-                        $textMessage = new TextMessageBuilder($textReplyMessage);
-                        $textReplyMessage2 = $id;
-                        $textMessage2 = new TextMessageBuilder($textReplyMessage2);
-                      
-                        $multiMessage = new MultiMessageBuilder;
-                        $multiMessage->add($textMessage);
-                        $multiMessage->add($textMessage2);
-                        $replyData = $multiMessage;
-
-  }
+                    $multiMessage->add($textMessage2);         
+                    $replyData = $multiMessage; 
+            }
+            break;
+        default:
+            $textReplyMessage = json_encode($events);
+            $replyData = new TextMessageBuilder($textReplyMessage);         
+            break;  
+    }
 }
-       $textReplyMessage = json_encode($events);
-       $replyData = new TextMessageBuilder($textReplyMessage);         
-            
-    
- }
 // ส่วนของคำสั่งจัดเตียมรูปแบบข้อความสำหรับส่ง
 $textMessageBuilder = new TextMessageBuilder($textReplyMessage);
  
