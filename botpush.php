@@ -110,7 +110,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $multiMessage->add($stickerMessage);
                     $replyData = $multiMessage; 
                     break;
-                case "$isData >0":
+                case $isData >0:
                     foreach($data as $rec){
                     $textReplyMessage = $rec->system;
                     $textMessage = new TextMessageBuilder($textReplyMessage);
