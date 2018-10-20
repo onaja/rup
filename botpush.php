@@ -79,7 +79,19 @@
     $arrayPostData['messages'][1]['text'] = $id;
     $arrayPostData['messeges'][2]['type'] = "confirm";
     $arrayPostData['messages'][2]['text'] = 'kuy';
-    $arrayPostData['messages'][2]['actions'] = "type": "message","label": "Yes","text": "yes";
+    $arrayPostData['messages'][2]['actions'] = array(
+                    
+          {
+            "type": "message",
+            "label": "Yes",
+            "text": "yes"
+          },
+          {
+            "type": "message",
+            "label": "No",
+            "text": "no"
+          }
+    );
     
    
     replyMsg($arrayHeader,$arrayPostData);
