@@ -117,15 +117,15 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     break;
                 case "B":
                     if($isData >0){
-                       foreach($data as $rec){
-                        $textReplyMessage = $rec->system;
+                       
+                        $textReplyMessage = "ดึง";
                         $textMessage = new TextMessageBuilder($textReplyMessage);
                            
                         $multiMessage =     new MultiMessageBuilder;
                         $multiMessage->add($textMessage);       
                         $replyData = $multiMessage;   
 
-                       }
+                       
                       }else{
                         
                         $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
