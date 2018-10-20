@@ -73,33 +73,6 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     //รับ id ของผู้ใช้
     $id = $events['events'][0]['source']['userId'];   
    
-    if (strpos($message, 'สอนบอท') !== false) {
-         if (strpos($message, 'สอนบอท') !== false) {
-            $x_tra = str_replace("สอนบอท","", $message);
-            $pieces = explode("|", $x_tra);
-            $_user=str_replace("[","",$pieces[0]);
-            $_system=str_replace("]","",$pieces[1]);
-             //Post New Data
-            $newData = json_encode(
-              array(
-                'user' => $_user,
-                'system'=> $_system
-              )
-            );
-        $opts = array(
-           'http' => array(
-           'method' => "POST",
-           'header' => "Content-type: application/json",
-           'content' => $newData
-       )
-    );
-    $context = stream_context_create($opts);
-    $returnValue = file_get_contents($url,false,$context);
-    $message = "A";
-  }
-}else{
-  $message = "B";
-}
     switch ($typeMessage){
         case 'text':
             switch ($message) {
