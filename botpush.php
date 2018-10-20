@@ -72,8 +72,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $message = strtolower($message);
     //รับ id ของผู้ใช้
     $id = $arrayJson['events'][0]['source']['userId'];   
-    switch ($typeMessage){
-        case 'text':
+   
                  if (strpos($message, 'สอนบอท') !== false) {
                        if (strpos($message, 'สอนบอท') !== false) {
                             $x_tra = str_replace("สอนบอท","", $message);
@@ -133,11 +132,11 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 
   }
 }
-        default:
+        
             $textReplyMessage = json_encode($events);
             $replyData = new TextMessageBuilder($textReplyMessage);         
-            break;  
-    }
+            
+    
  }
 // ส่วนของคำสั่งจัดเตียมรูปแบบข้อความสำหรับส่ง
 $textMessageBuilder = new TextMessageBuilder($textReplyMessage);
