@@ -94,7 +94,7 @@
             "text": "no"
           }
       ]
-  };
+  }
     
     
     replyMsg($arrayHeader,$arrayPostData);
