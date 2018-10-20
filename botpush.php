@@ -100,6 +100,12 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 }else{
   if($isData >0){
    foreach($data as $rec){
+    $arrayPostData['to'] = $id;
+    $arrayPostData = array();
+    $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+    $arrayPostData['messages'][0]['type'] = "text";
+    $arrayPostData['messages'][0]['text'] = $rec->system;
+    replyMsg($arrayHeader,$arrayPostData);
     $message = "B";
    }
   }else{
@@ -122,16 +128,12 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $replyData = $multiMessage;   
                     break;
                 case "B":
-                    if($isData >0){
-                    foreach($data as $rec){
-                    $textReplyMessage = $rec->system;
+                    $textReplyMessage = "ดอ" ;
                     $textMessage = new TextMessageBuilder($textReplyMessage);
                     
                     $multiMessage = new MultiMessageBuilder;
-                    $multiMessage->add($textMessage);         
-                    $replyData = $multiMessage;   
-                    }
-                    }
+                    $multiMessage->add($textMessage);             
+                    $replyData = $multiMessage; 
                     
                     break;      
                 case "C":
@@ -251,7 +253,7 @@ echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
     
   }
 }
-    
+    */
 function replyMsg($arrayHeader,$arrayPostData){
         $strUrl = "https://api.line.me/v2/bot/message/reply";
         $ch = curl_init();
@@ -265,5 +267,5 @@ function replyMsg($arrayHeader,$arrayPostData){
         $result = curl_exec($ch);
         curl_close ($ch);
     }
-   exit;*/
+   exit;
 ?>
