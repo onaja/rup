@@ -116,7 +116,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $replyData = $multiMessage;   
                     break;
                 case "B":
-                    if($isData >0){
+                    
                        
                         $textReplyMessage = "ดึง";
                         $textMessage = new TextMessageBuilder($textReplyMessage);
@@ -124,21 +124,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                         $multiMessage =     new MultiMessageBuilder;
                         $multiMessage->add($textMessage);       
                         $replyData = $multiMessage;   
-
-                       
-                      }else{
-                        
-                        $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
-                        $textMessage = new TextMessageBuilder($textReplyMessage);
-                           
-                        $multiMessage =  new MultiMessageBuilder;
-                        $multiMessage->add($textMessage);       
-                        $replyData = $multiMessage;   
-
-                      }
-                    }
-                    break;      
-               
+   
+                break;      
+            
                 default:
                     $textReplyMessage = "มาไงวะ";
                     $textMessage = new TextMessageBuilder($textReplyMessage);
@@ -149,13 +137,15 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $multiMessage->add($textMessage);
                     $multiMessage->add($textMessage2);         
                     $replyData = $multiMessage; 
+                break;
             }
-            break;
+            
         default:
             $textReplyMessage = json_encode($events);
             $replyData = new TextMessageBuilder($textReplyMessage);         
             break;  
     }
+}
 
 //l ส่วนของคำสั่งตอบกลับข้อความ
 $response = $bot->replyMessage($replyToken,$replyData);
