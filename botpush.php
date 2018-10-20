@@ -99,9 +99,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
   }
 }else{
   if($isData >0){
-   
+   foreach($data as $rec){
     $message = "B";
-   
+   }
   }else{
     $message = "C";
   }
