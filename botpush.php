@@ -102,7 +102,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 }
     switch ($typeMessage){
         case 'text':
-            switch ($userMessage) {
+            switch ($message) {
                 case "A":
                      $textReplyMessage = "ขอบคุณที่สอนจ้า";
                      $textMessage = new TextMessageBuilder($textReplyMessage);
