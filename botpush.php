@@ -99,9 +99,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
   }
 }else{
   if($isData >0){
-   foreach($data as $rec){
+   
     $message = "B";
-   }
+   
   }else{
     $message = "C";
   }
@@ -122,12 +122,15 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $replyData = $multiMessage;   
                     break;
                 case "B":
+                    foreach($data as $rec){
                     $textReplyMessage = $rec->system;
                     $textMessage = new TextMessageBuilder($textReplyMessage);
                     
                     $multiMessage = new MultiMessageBuilder;
                     $multiMessage->add($textMessage);
                     $replyData = $multiMessage;   
+                    }
+                    
                     break;      
                 case "C":
                     $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
