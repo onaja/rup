@@ -69,7 +69,6 @@
     
    }
   }else{
-    $count++;
     $arrayPostData['to'] = $id;
     $arrayPostData = array();
     $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
