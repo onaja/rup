@@ -70,6 +70,23 @@
    }
   }else{
     
+    $arrayPostData  = new TemplateMessageBuilder('Confirm Template',
+        new ConfirmTemplateBuilder(
+                'Confirm template builder', // ข้อความแนะนำหรือบอกวิธีการ หรือคำอธิบาย
+                array(
+                    new MessageTemplateActionBuilder(
+                        'Yes', // ข้อความสำหรับปุ่มแรก
+                        'YES'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                    ),
+                    new MessageTemplateActionBuilder(
+                        'No', // ข้อความสำหรับปุ่มแรก
+                        'NO' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                    )
+                )
+        )
+    );
+      replyMsg($arrayHeader,$arrayPostData);
+      /*
     $arrayPostData['to'] = $id;
     $arrayPostData = array();
     $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
@@ -94,7 +111,7 @@
                 )
         )
     );
-    replyMsg($arrayHeader,$arrayPostData);
+    replyMsg($arrayHeader,$arrayPostData);*/
     
   }
 }
