@@ -82,14 +82,14 @@
     $arrayPostData['messages'][2]['actions'] = array(
                     
           {
-            "type": "message",
-            "label": "Yes",
-            "text": "yes"
+            "type" => "message",
+            "label" => "Yes",
+            "text" => "yes"
           },
           {
-            "type": "message",
-            "label": "No",
-            "text": "no"
+            "type" => "message",
+            "label" => "No",
+            "text" => "no"
           }
     );
     
