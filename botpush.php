@@ -122,16 +122,15 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     $replyData = $multiMessage;   
                     break;
                 case "B":
+                    if($isData >0){
                     foreach($data as $rec){
                     $textReplyMessage = $rec->system;
                     $textMessage = new TextMessageBuilder($textReplyMessage);
-                    $textReplyMessage2 = "test";
-                    $textMessage2 = new TextMessageBuilder($textReplyMessage2);
                     
                     $multiMessage = new MultiMessageBuilder;
-                    $multiMessage->add($textMessage);
-                    $multiMessage->add($textMessage2);
+                    $multiMessage->add($textMessage);         
                     $replyData = $multiMessage;   
+                    }
                     }
                     
                     break;      
