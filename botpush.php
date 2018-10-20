@@ -98,19 +98,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $message = "A";
   }
 }else{
-  if($isData >0){
-   foreach($data as $rec){
-    $arrayPostData['to'] = $id;
-    $arrayPostData = array();
-    $arrayPostData['replyToken'] = $events['events'][0]['replyToken'];
-    $arrayPostData['messages'][0]['type'] = "text";
-    $arrayPostData['messages'][0]['text'] = $rec->system;
-    replyMsg($arrayHeader,$arrayPostData);
-    $message = "B";
-   }
-  }else{
-    $message = "C";
-  }
+  $message = "B";
 }
     switch ($typeMessage){
         case 'text':
@@ -152,19 +140,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                       }
                     }
                     break;      
-                case "C":
-                    $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
-                    $textMessage = new TextMessageBuilder($textReplyMessage);
-                    $textReplyMessage2 = $id;
-                    $textMessage2 = new TextMessageBuilder($textReplyMessage2);
-                    
-                    $multiMessage = new MultiMessageBuilder;
-                    $multiMessage->add($textMessage);
-                    $multiMessage->add($textMessage2);         
-                    $replyData = $multiMessage; 
-                    break;                   
+               
                 default:
-                    $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
+                    $textReplyMessage = "มาไงวะ";
                     $textMessage = new TextMessageBuilder($textReplyMessage);
                     $textReplyMessage2 = $id;
                     $textMessage2 = new TextMessageBuilder($textReplyMessage2);
