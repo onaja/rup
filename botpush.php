@@ -119,7 +119,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                 case "B":
                     if($isData >0){
                        foreach($data as $rec){
-                        $textReplyMessage = "ดึง";
+                    $temp = array();
+                    $temp = $rec->system;
+                    $textReplyMessage = $temp;
                     $textMessage = new TextMessageBuilder($textReplyMessage);
                     
                     $multiMessage = new MultiMessageBuilder;
