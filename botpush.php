@@ -135,15 +135,30 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     }
                     else{
                     
-                    $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
-                    $textMessage = new TextMessageBuilder($textReplyMessage);
-                    $textReplyMessage2 = $isData;
-                    $textMessage2 = new TextMessageBuilder($textReplyMessage2);
-                    
-                    $multiMessage = new MultiMessageBuilder;
-                    $multiMessage->add($textMessage);
-                    $multiMessage->add($textMessage2);
-                    $replyData = $multiMessage;   
+                        $actionBuilder = array(
+                                new MessageTemplateActionBuilder(
+                                    'ใช่',// ข้อความแสดงในปุ่ม
+                                    'ใช่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                ),
+                                new MessageTemplateActionBuilder(
+                                    'ไม่',// ข้อความแสดงในปุ่ม
+                                    'ไม่' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                ),
+                                new MessageTemplateActionBuilder(
+                                    'สอนบอท',// ข้อความแสดงในปุ่ม
+                                    'คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                ),
+                            );
+                        
+                    $imageUrl = 'https://www.picz.in.th/image/kFKkru';    
+                    $replyData = new TemplateMessageBuilder('Button Template',
+                        new ButtonTemplateBuilder(
+                                'คำที่คุณพิมพ์หมายถึง ใช่ หรือ ไม่', // กำหนดหัวเรื่อง
+                                'กรุณาเลือก 1 ข้อ', // กำหนดรายละเอียด
+                                $imageUrl, // กำหนด url รุปภาพ
+                                $actionBuilder  // กำหนด action object
+                        )
+                    );           
                     }
                       
                        
@@ -151,6 +166,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     break;      
                     
                 default:
+                    
                     $textReplyMessage = "ว่ายังไงนะครับ";
                     $textMessage = new TextMessageBuilder($textReplyMessage);
                     
