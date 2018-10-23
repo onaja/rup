@@ -150,15 +150,23 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                                 ),
                             );
                         
-                    $imageUrl = 'https://www.picz.in.th/image/kFKkru';    
-                    $replyData = new TemplateMessageBuilder('Button Template',
+                    $imageUrl = 'https://www.picz.in.th/images/2018/10/23/kFKkru.jpg';    
+                    $buttonMessage = new TemplateMessageBuilder('Button Template',
                         new ButtonTemplateBuilder(
                                 'คำที่คุณพิมพ์หมายถึง ใช่ หรือ ไม่', // กำหนดหัวเรื่อง
                                 'กรุณาเลือก 1 ข้อ', // กำหนดรายละเอียด
                                 $imageUrl, // กำหนด url รุปภาพ
                                 $actionBuilder  // กำหนด action object
                         )
-                    );           
+                    );  
+                    
+                    $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
+                    $textMessage = new TextMessageBuilder($textReplyMessage); 
+                        
+                    $multiMessage = new MultiMessageBuilder;
+                    $multiMessage->add($buttonMessage);
+                    $multiMessage->add($textMessage);   
+                    $replyData = $multiMessage; 
                     }
                       
                        
