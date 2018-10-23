@@ -14,8 +14,8 @@ require_once 'bot_settings.php';
 
     $strUrl = "https://api.line.me/v2/bot/message/reply";
     $api_key="flAOZDL2-6BNiSZ-XqZc0FAKrYEo2dc3";
-    $url = 'https://api.mlab.com/api/1/databases/rup_db/collections/yes?apiKey='.$api_key.'';
-    $json = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/yes?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
+    $url = 'https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'';
+    $json = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
     $data = json_decode($json);
     $isData=sizeof($data);
 
@@ -120,13 +120,12 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     
                     if($isData >0){
                        foreach($data as $rec){
-                        $arrayPostData['to'] = $id;
-                        $arrayPostData = array();
-                        $arrayPostData['replyToken'] = $events['events'][0]['replyToken'];
-                        $arrayPostData['messages'][0]['type'] = "text";
-                        $arrayPostData['messages'][0]['text'] = $rec->system;
-                        replyMsg($arrayHeader,$arrayPostData);
+                        
+                        $textReplyMessage = array();                  
+                        $textReplyMessage = $rec->system;
+                        $replyData = new TextMessageBuilder($textReplyMessage);
 
+                        
                        }
                     }
                     else{
