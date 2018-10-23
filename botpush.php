@@ -118,15 +118,27 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     break;
                 case "B":
                     
-                       
+                    if($isData >0){
+                       foreach($data as $rec){
+                        $arrayPostData['to'] = $id;
+                        $arrayPostData = array();
+                        $arrayPostData['replyToken'] = $events['events'][0]['replyToken'];
+                        $arrayPostData['messages'][0]['type'] = "text";
+                        $arrayPostData['messages'][0]['text'] = $rec->system;
+                        replyMsg($arrayHeader,$arrayPostData);
+
+                       }
+                    }
+                    else{
                     
-                    $textReplyMessage = $data;
+                    $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
                     $textMessage = new TextMessageBuilder($textReplyMessage);
                     
                     $multiMessage = new MultiMessageBuilder;
                     $multiMessage->add($textMessage);
                     $replyData = $multiMessage;   
-
+                    }
+                      
                        
                      
                     break;      
