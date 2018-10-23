@@ -57,14 +57,6 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
    
 
-    $strUrl = "https://api.line.me/v2/bot/message/reply";
-    $api_key="flAOZDL2-6BNiSZ-XqZc0FAKrYEo2dc3";
-    $url = 'https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'';
-    $json = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
-    $data = json_decode($json);
-    $isData = sizeof($data);
-
-    
     if(!is_null($events)){
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
     $replyToken = $events['events'][0]['replyToken'];
@@ -74,6 +66,14 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $message = strtolower($message);
     //รับ id ของผู้ใช้
     $id = $events['events'][0]['source']['userId'];   
+    //เชื่อมต่อ mlab
+    $strUrl = "https://api.line.me/v2/bot/message/reply";
+    $api_key="7vVKdrk-Rg7qp8C5KFUrkQRWmAJaazgQ";
+    $url = 'https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'';
+    $json = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
+    $data = json_decode($json);
+    $isData = sizeof($data);
+             
            if (strpos($message, 'สอนบอท') !== false) {
                  if (strpos($message, 'สอนบอท') !== false) {
                     $x_tra = str_replace("สอนบอท","", $message);
