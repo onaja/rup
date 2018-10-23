@@ -119,9 +119,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                 case "B":
                     if($isData >0){
                        foreach($data as $rec){
-                    $temp = array();
-                    $temp = $rec->system;
-                    $textReplyMessage = $temp[0];
+                    
+                    $textReplyMessage = $isData;
                     $textMessage = new TextMessageBuilder($textReplyMessage);
                     
                     $multiMessage = new MultiMessageBuilder;
