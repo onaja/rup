@@ -120,7 +120,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     
                        
                     
-                    $textReplyMessage = $isData;
+                    $textReplyMessage = $data;
                     $textMessage = new TextMessageBuilder($textReplyMessage);
                     
                     $multiMessage = new MultiMessageBuilder;
