@@ -121,7 +121,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                        foreach($data as $rec){
                     $temp = array();
                     $temp = $rec->system;
-                    $textReplyMessage = $temp;
+                    $textReplyMessage = $temp[0];
                     $textMessage = new TextMessageBuilder($textReplyMessage);
                     
                     $multiMessage = new MultiMessageBuilder;
