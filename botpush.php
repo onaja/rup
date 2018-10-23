@@ -123,12 +123,12 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     if($isData >0){
                        foreach($data as $rec){
                         
-                        $arrayPostData['to'] = $id;
-                        $arrayPostData = array();
-                        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-                        $arrayPostData['messages'][0]['type'] = "text";
-                        $arrayPostData['messages'][0]['text'] = $rec->system;
-                        $replyData = $arrayPostData;
+                        $textReplyMessage = $rec->system;
+                        $textMessage = new TextMessageBuilder($textReplyMessage);   
+                           
+                        $multiMessage = new MultiMessageBuilder;
+                        $multiMessage->add($textMessage);      
+                        $replyData = $multiMessage; 
 
                         
                        }
