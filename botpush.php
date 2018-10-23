@@ -62,7 +62,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
     $url = 'https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'';
     $json = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
     $data = json_decode($json);
-    $isData=sizeof($data);
+    $isData = sizeof($data);
 
     
     if(!is_null($events)){
@@ -137,9 +137,12 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
                     
                     $textReplyMessage = "คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนบอท[คำถาม|คำตอบ]";
                     $textMessage = new TextMessageBuilder($textReplyMessage);
+                    $textReplyMessage2 = $isData;
+                    $textMessage2 = new TextMessageBuilder($textReplyMessage2);
                     
                     $multiMessage = new MultiMessageBuilder;
                     $multiMessage->add($textMessage);
+                    $multiMessage->add($textMessage2);
                     $replyData = $multiMessage;   
                     }
                       
