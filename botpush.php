@@ -91,7 +91,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 
     $events = json_decode($content, true);
 
-    $accessToken = "Dp5cTXj8NHTYDiKoy/fQeb1zcbXljHoONSe4hCHXj1SIQ2FJCCH7qQXjnvfjxR21PWBquHunHE0HZtRL8Ezq9xf7cxTdeI/fKSKy9uNqwBIn3XicVdrptnh7SW4nD77FZeYQgrBWfpTFW9FG1EEujQdB04t89/1O/w1cDnyilFU=";//copy Channel access token ตอนที่ตั้งค่ามาใส่
+    $accessToken = "yZSOO/AABMcg6JAgHNezv8Pv8DdK9YIqC4As9AWGOZp/SVaxTtBMcp7Ck+fn6BAI8Qke6WZkqT5yO8WhEmpwxmvSD0g/XqOX97c9CbiEIHUOV7lWue8cqg+wdeDGdT84iQ5Rbg8AAGXEj3BP2NdwIQdB04t89/1O/w1cDnyilFU=
+";//copy Channel access token ตอนที่ตั้งค่ามาใส่
 
     $arrayHeader = array();
 
@@ -119,15 +120,15 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 
     //เชื่อมต่อ mlab
 
-    $api_key="7vVKdrk-Rg7qp8C5KFUrkQRWmAJaazgQ";
+    $api_key="e0C-QltQdKgdRg4eABS7RTrZ-fiRtPSe";
 
 	
 
     //colletion พูดคุยทั่วไป
 
-    $url = 'https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'';
+    $url = 'https://api.mlab.com/api/1/databases/pwr/collections/linebot?apiKey='.$api_key.'';
 
-    $json = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/bot?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
+    $json = file_get_contents('https://api.mlab.com/api/1/databases/pwr/collections/linebot?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
 
     $data = json_decode($json);
 
@@ -135,9 +136,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 
     //collection คำตอบใช่ หรือ ไม่
 
-    $url2 = 'https://api.mlab.com/api/1/databases/rup_db/collections/answer?apiKey='.$api_key.'';
+    $url2 = 'https://api.mlab.com/api/1/databases/pwr/collections/answer?apiKey='.$api_key.'';
 
-    $json2 = file_get_contents('https://api.mlab.com/api/1/databases/rup_db/collections/answer?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
+    $json2 = file_get_contents('https://api.mlab.com/api/1/databases/pwr/collections/answer?apiKey='.$api_key.'&q={"user":"'.$message.'"}');
 
     $data2 = json_decode($json2);
 
