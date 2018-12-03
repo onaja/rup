@@ -1,3 +1,4 @@
+
 <?php
 require "vendor/autoload.php";
 // การตั้งเกี่ยวกับ bot
@@ -200,31 +201,20 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 			
 		    break;
 			case "D":
-			for($count = 0 ; $count <15 ; $count++){
-	        $textReplyMessage = "คุณคิดว่า คุณสามารถทำให้ดีกว่านี้ได้";
-                $textMessage = new TextMessageBuilder($textReplyMessage); 
-				
-		 	
-		$message = $events['events'][0]['message']['text'];
-		
-    			
-				
-		$textReplyMessage2 = $count;
-                $textMessage2 = new TextMessageBuilder($textReplyMessage2);		
-				
-		$textReplyMessage3 = $message;
-                $textMessage3 = new TextMessageBuilder($textReplyMessage3);
-				
-	       				
-                $multiMessage = new MultiMessageBuilder;
-                $multiMessage->add($textMessage);   
-		$multiMessage->add($textMessage2);  
-		$multiMessage->add($textMessage3);
-                $replyData = $multiMessage; 
-		$response = $bot->pushMessage($id,$replyData);
-			}
 			
-		   break;
+			session_start();
+			ob_start();
+			$_SESSION["1"]= 1 ;
+			
+			$textReplyMessage = $_SESSION['1'] ;
+                  	$textMessage = new TextMessageBuilder($textReplyMessage); 
+			'
+			
+			session_start()
+			$name=value;
+			session_regis("name");
+			
+		   
         default:
                     
             $actionBuilder = array(
