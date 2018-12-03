@@ -1,6 +1,6 @@
 <?php
 
-echo "Hello LINE BOT";
+echo "Hello LINE BOT"; <br>
 echo "Fanstasy";
 
 ?>
